@@ -35,14 +35,6 @@ async function fetchProductAsync() {    //create fetchProductAsync function
       }
     }
     
-    //Helper function: Dynamically adds product elements to the page
-    
-    // Error handling function to display a user-friendly error and log it
-    function handleError(error) {
-      const container = document.getElementById("product-container");
-      container.innerHTML = `<p style="color:red;"> Error loading products: ${error.message}</p>`;
-      console.error("Error in fetchProductsAsync():", error);
-    }
     
     fetchProductAsync(); //cals the function
 
@@ -74,4 +66,13 @@ async function fetchProductAsync() {    //create fetchProductAsync function
           //Append it to the container
           container.appendChild(productCard);
         });
+      }
+
+      //Task 5: Reusable Error Handler
+      
+      // Error handling function to display a user-friendly error and log it
+    function handleError(error) {
+        const container = document.getElementById("product-container");
+        container.innerHTML = `<p style="color:red;"> Error loading products: ${error.message}</p>`;
+        console.error("Error in fetchProductsAsync():", error);
       }
