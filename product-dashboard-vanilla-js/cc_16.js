@@ -35,26 +35,7 @@ async function fetchProductAsync() {    //create fetchProductAsync function
       }
     }
     
-    // Helper function: Dynamically adds product elements to the page
-    function displayProducts(products) {    //selects elements on page that get displayed
-      const container = document.getElementById("product-container");
-      container.innerHTML = ""; // Clear existing content
-    
-      products.forEach(product => { //extracts the name price and image
-        const { name, price, image } = product.fields;
-    
-        const productCard = document.createElement("div");  //creates a div element to hold a product
-        productCard.className = "product";
-    
-        productCard.innerHTML = `   //populates product card with the properties we extracted
-          <img src="${image[0].url}" alt="${name}" />
-          <h2>${name}</h2>
-          <p>$${price}</p>
-        `;
-    
-        container.appendChild(productCard); //adds the finishes cards to the page in the container
-      });
-    }
+    //Helper function: Dynamically adds product elements to the page
     
     // Error handling function to display a user-friendly error and log it
     function handleError(error) {
@@ -64,3 +45,33 @@ async function fetchProductAsync() {    //create fetchProductAsync function
     }
     
     fetchProductAsync(); //cals the function
+
+    
+    //Task 4: Display the Products
+
+    function displayProducts(products) {
+        //Select the container
+        const container = document.getElementById("product-container");
+        container.innerHTML = ""; // Clear any existing content
+      
+        //Loop through the first 5 products
+        const firstFive = products.slice(0, 5); // Only grab first 5
+      
+        firstFive.forEach(product => {
+          const { name, price, image } = product.fields;
+      
+          //Create a product card
+          const productCard = document.createElement("div");
+          productCard.className = "product";
+      
+          //Fill it with content
+          productCard.innerHTML = `
+            <img src="${image[0].url}" alt="${name}" />
+            <h2>${name}</h2>
+            <p>$${price}</p>
+          `;
+      
+          //Append it to the container
+          container.appendChild(productCard);
+        });
+      }
