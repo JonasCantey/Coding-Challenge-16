@@ -14,8 +14,6 @@ function fetchProductsThen () { //creating function to log products from api
     });
 }
 
-fetchProductsThen();    //calling the function
-
 
 //Task 3: Fetch Products with async/await
 console.log("Task 3: Fetch Products with async/await")
@@ -34,9 +32,6 @@ async function fetchProductAsync() {    //create fetchProductAsync function
         handleError(error);
       }
     }
-    
-    
-    fetchProductAsync(); //cals the function
 
     
     //Task 4: Display the Products
@@ -76,3 +71,7 @@ async function fetchProductAsync() {    //create fetchProductAsync function
         container.innerHTML = `<p style="color:red;"> Error loading products: ${error.message}</p>`;
         console.error("Error in fetchProductsAsync():", error);
       }
+
+      //Task 6: Call Your Fetch Functions
+      fetchProductsThen();    //calling the function
+      fetchProductAsync(); //cals the function
